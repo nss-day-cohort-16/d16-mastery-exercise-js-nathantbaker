@@ -1,6 +1,3 @@
-
-console.log("hi");
-
 // Create a `tree` function that should build a pine tree out of a character in the Chrome dev tools console.
 
 // Create object to hold user inputs
@@ -9,6 +6,7 @@ var inputObject = {
   character: ""
 };
 
+// Console logging starting values
 console.log("Starting Height Input:", inputObject.height);
 console.log("Starting Character Input:", inputObject.character);
 
@@ -17,16 +15,27 @@ var buttonElement = document.getElementById("button");
 var characterElement = document.getElementById("character");
 var heightElement = document.getElementById("height");
 
+// Store alert message
+var alertMessage = "Sorry, please fill out both fields first."
+
 // Attached Event Listener to button
 buttonElement.addEventListener("click", pushInputs);
+
 function pushInputs() {
-    inputObject.character = characterElement.value;
-    inputObject.height = heightElement.value;
-    console.log("Height Input:", inputObject.height);
-    console.log("Character Input:", inputObject.character);
+    // Only submit button if there are things in the fields
+    if (characterElement.value != "" && heightElement.value != "") {
+      inputObject.character = characterElement.value;
+      inputObject.height = heightElement.value;
+      console.log("Height Input:", inputObject.height);
+      console.log("Character Input:", inputObject.character);
+    } else {
+      alert(alertMessage);
+    }
 }
 
-// Submit form if you press enter while in height field
+
+
+// Submit form if you press enter while in HEIGHT field. (13 is referencing the enter key)
 heightElement.addEventListener("keyup", function(event) {
     event.preventDefault();
     // But don't allow it if both fields don't have something
@@ -35,7 +44,7 @@ heightElement.addEventListener("keyup", function(event) {
     }
 });
 
-// Submit form if you press enter while in character field
+// Submit form if you press enter while in CHARACTER field (13 is referencing the enter key)
 characterElement.addEventListener("keyup", function(event) {
     event.preventDefault();
     // But don't allow it if both fields don't have something
