@@ -29,7 +29,8 @@ function pushInputs() {
 // Submit form if you press enter while in height field
 heightElement.addEventListener("keyup", function(event) {
     event.preventDefault();
-    if (event.keyCode == 13) {
+    // But don't allow it if both fields don't have something
+    if (event.keyCode == 13 && (characterElement.value != "" && heightElement.value != "")) {
         document.getElementById("button").click();
     }
 });
@@ -37,7 +38,8 @@ heightElement.addEventListener("keyup", function(event) {
 // Submit form if you press enter while in character field
 characterElement.addEventListener("keyup", function(event) {
     event.preventDefault();
-    if (event.keyCode == 13 && characterElement.value == 2) {
+    // But don't allow it if both fields don't have something
+    if (event.keyCode == 13 && (characterElement.value != "" && heightElement.value != "")) {
         document.getElementById("button").click();
     }
 });
