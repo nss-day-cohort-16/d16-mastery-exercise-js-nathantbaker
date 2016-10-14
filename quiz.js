@@ -15,45 +15,44 @@ var buttonElement = document.getElementById("button");
 var characterElement = document.getElementById("character");
 var heightElement = document.getElementById("height");
 
-// Store alert message
-var alertMessage = "Sorry, please fill out both fields first."
+// Error Messages
+var alertMissingInput = "Sorry, please fill out both fields first."
+var alertNumber = "Sorry, please provide a number for the height."
+var alertCharacter = "Sorry, please provide a characer in the characer field."
 
 // Attached Event Listener to button
 buttonElement.addEventListener("click", pushInputs);
 
+// Function to push user inputs into object
 function pushInputs() {
-    // Only submit button if there are things in the fields
+    // But only submit button if there are things in the fields
     if (characterElement.value != "" && heightElement.value != "") {
       inputObject.character = characterElement.value;
       inputObject.height = heightElement.value;
       console.log("Height Input:", inputObject.height);
       console.log("Character Input:", inputObject.character);
     } else {
-      alert(alertMessage);
+      alert(alertMissingInput);
     }
 }
 
-
-
-// Submit form if you press enter while in HEIGHT field. (13 is referencing the enter key)
+// Submit form if you press enter while in HEIGHT field. 
 heightElement.addEventListener("keyup", function(event) {
     event.preventDefault();
-    // But don't allow it if both fields don't have something
-    if (event.keyCode == 13 && (characterElement.value != "" && heightElement.value != "")) {
-        document.getElementById("button").click();
+    if (event.keyCode == 13) { //13 is referencing the enter key
+        pushInputs();
     }
 });
 
-// Submit form if you press enter while in CHARACTER field (13 is referencing the enter key)
+// Submit form if you press enter while in CHARACTER field
 characterElement.addEventListener("keyup", function(event) {
     event.preventDefault();
     // But don't allow it if both fields don't have something
-    if (event.keyCode == 13 && (characterElement.value != "" && heightElement.value != "")) {
-        document.getElementById("button").click();
+    if (event.keyCode == 13) {
+        pushInputs();
     }
 });
 
-// If either of the input fields does not have a value in it when the user presses the enter key, or presses the button, then display an alert stating that both fields must have a value.
 
 // ##### Example
 
