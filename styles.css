@@ -1,0 +1,15 @@
+body {
+  margin: 20px;
+  text-align: center;
+}
+
+.field, button {
+  width: 200px;
+  padding: 10px;
+  margin: 10px;
+}
+
+h2 {
+  margin: 0;
+  color: #444;
+}
