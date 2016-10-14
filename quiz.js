@@ -26,23 +26,21 @@ function pushInputs() {
     console.log("Character Input:", inputObject.character);
 }
 
-document.getElementById("height").addEventListener("keyup", function(event) {
+// Submit form if you press enter while in height field
+heightElement.addEventListener("keyup", function(event) {
     event.preventDefault();
     if (event.keyCode == 13) {
         document.getElementById("button").click();
     }
 });
 
-
-
-// // If enter is pressed while in form field, submit form
-// function (e) {
-//   if (13 == e.keyCode) {
-//      pushInputs();
-//   }
-// }
-
-// Once the user enters in a number, and a character, the user can either then just press the enter key _(as long as the cursor is in one of the input fields)_, or click a button that is labeled "Grow your tree" and the tree should be shown in the console. This requires you to add an event listener to the button, as well as an event listener for the enter/return key.
+// Submit form if you press enter while in character field
+characterElement.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode == 13 && characterElement.value == 2) {
+        document.getElementById("button").click();
+    }
+});
 
 // If either of the input fields does not have a value in it when the user presses the enter key, or presses the button, then display an alert stating that both fields must have a value.
 
