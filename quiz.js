@@ -32,19 +32,21 @@ buttonElement.addEventListener("click", pushInputs);
 function makeTree (treeHeight, treeCharacer) {
   // Set variable print stuff
   var toPrint = "";
-  var spaces = [];
+  var charToPrint = "";
+  var arrayOfSpaces = [" ", " ", " "];
+  var spaces = arrayOfSpaces.join("");
   // Number of lines we're printing
   for (var i = 0; i < treeHeight; i++) { 
     
     // Do something here to inject number of spaces equal to treeHeight - 1 in array above. Then flatten it into a string. Then pass it down below.
 
     // Add another character each time you go down
-    toPrint += treeCharacer;
-    toPrint = spaces += treeCharacer;
-    console.log(toPrint);
+    charToPrint += treeCharacer;
 
+    // Contatentate right amount of spaces + charaters
+    toPrint = spaces += charToPrint;
+    console.log(toPrint);
   }
-    
 }
 
 // Function to push user inputs into object
@@ -71,23 +73,10 @@ function pushInputs() {
     }
 }
 
-// // Function to push user inputs into object
-// function pushInputs() {
-//     // But only submit button if there are things in the fields
-//     if (characterElement.value != "" && heightElement.value != "") {
-//       inputObject.character = characterElement.value;
-//       inputObject.height = heightElement.value;
-//       console.log("Height Input:", inputObject.height);
-//       console.log("Character Input:", inputObject.character);
-//     } else {
-//       alert(alertMissingInput);
-//     }
-// }
-
 // Submit form if you press enter while in HEIGHT field. 
 heightElement.addEventListener("keyup", function(event) {
     event.preventDefault();
-    if (event.keyCode == 13) { //13 is referencing the enter key
+    if (event.keyCode == 13) { // 13 is key for enter key
         pushInputs();
     }
 });
@@ -103,7 +92,7 @@ characterElement.addEventListener("keyup", function(event) {
 
 // ##### Example
 
-// Here's what the pine tree should look like when you specify a height of 7, and use the asterisk character.
+// Here's what the pine tree should look like when you specify a height of 3, and use the asterisk character.
 
 // ```js
 //  *
