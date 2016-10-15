@@ -33,44 +33,47 @@ function makeTree (treeHeight, treeCharacer) {
   // Set variable print stuff
   var toPrint = "";
   var charToPrint = "";
-  var arrayOfSpaces = [" ", " ", " "];
-  var spaces = arrayOfSpaces.join("");
+  var spaces = ["x", "x"];
+  var spacesToPrint = spaces.join("");
   // Number of lines we're printing
-  for (var i = 0; i < treeHeight; i++) { 
+  for (var i = 0; i < treeHeight; i++) {
     
-    // Do something here to inject number of spaces equal to treeHeight - 1 in array above. Then flatten it into a string. Then pass it down below.
+    // Inject number of spaces equal to treeHeight - 1 in array above.
+    for (var j = 0; j < treeHeight; j++) { 
+      spaces.push("x");
+    }
 
     // Add another character each time you go down
     charToPrint += treeCharacer;
 
     // Contatentate right amount of spaces + charaters
-    toPrint = spaces += charToPrint;
+    toPrint = spacesToPrint += charToPrint;
     console.log(toPrint);
   }
 }
 
 // Function to push user inputs into object
 function pushInputs() {
-    if (characterElement.value == "" || heightElement.value == "") {
-      alert(alertMissingInput);
-      console.log("typeof!", height);
-    // }
-    // else if (typeof height === NaN) {
-    //   alert(alertNumber);
-    // }
-    // else if (typeof characterElement.value !== "string") {
-    //   alert(alertCharacter);
-    } else {
-      
-      // Push the inputs
-      character = characterElement.value;
-      height = Number(heightElement.value); //pass height as number
-      console.log("Height Input:", height);
-      console.log("Character Input:", character);
-      
-      // Make the Tree
-      makeTree(height, character);
-    }
+  if (characterElement.value == "" || heightElement.value == "") {
+    alert(alertMissingInput);
+    console.log("typeof!", height);
+  // }
+  // else if (typeof height === NaN) {
+  //   alert(alertNumber);
+  // }
+  // else if (typeof characterElement.value !== "string") {
+  //   alert(alertCharacter);
+  } else {
+    
+    // Push the inputs
+    character = characterElement.value;
+    height = Number(heightElement.value); //pass height as number
+    console.log("Height Input:", height);
+    console.log("Character Input:", character);
+    
+    // Make the Tree
+    makeTree(height, character);
+  }
 }
 
 // Submit form if you press enter while in HEIGHT field. 
