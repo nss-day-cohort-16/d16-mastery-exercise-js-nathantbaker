@@ -47,34 +47,14 @@ formElement.addEventListener("keyup", function(event) {
     }
 });
 
-function makeTree (treeHeight, treeCharacer) {
-  // Set variable print stuff
-  var toPrint = "";
-  var charToPrint = "";
-  var spaces = ["x", "x"];
-  var spacesToPrint = spaces.join("");
-
-  // Inject number of spaces equal to treeHeight - 1 in array above.
-  for (var j = 0; j < treeHeight; j++) { 
-    spaces.push("x");
-  }
-  
-  // Number of lines we're printing
-  for (var i = 0; i < treeHeight; i++) {
-    // Add another character each time you go down
-    charToPrint += treeCharacer;
-    // Contatentate right amount of spaces + charaters
-    toPrint = spacesToPrint += charToPrint;
-    console.log(toPrint);
-  }
-}
-
 // Function to push user inputs into object
 function pushInputs() {
 
   character = characterElement.value;
   height = Number(heightElement.value); //pass height as number
-
+  console.log("Updated Height Input:", height);
+  console.log("Updated Character Input:", character);
+  
    // error message if both fields blank
   if (characterElement.value == "" || heightElement.value == "") {
     alert(alertMissingInput);
@@ -82,12 +62,28 @@ function pushInputs() {
   // else if (height === NaN) {
   //   alert(alertNumber);
   } else {
-  
-  // Push the inputs
-  console.log("Updated Height Input:", height);
-  console.log("Updated Character Input:", character);
-  
-  // Make the Tree
-    makeTree(height, character);
+    makeTree(height, character); // Make the Tree
+  }
+}
+
+function makeTree(treeHeight, treeCharacter) {
+  var spacesString = "";
+  var charactersString = "";
+  var space = " ";
+
+  // Set spaces in spacesString to height
+  for (var j = 0; j < treeHeight; j++) {
+    spacesString += space;
+  }
+
+  // Number of lines we're printing
+  for (var i = 0; i < treeHeight; i++) {    
+    // Remove a space each line
+    spacesString = spacesString.slice(0, -1);
+    // Increase length of characters by 1 each time.
+    charactersString += treeCharacter;
+    console.log("line " + (i + 1) + ":" + spacesString + charactersString);
+    // Increase length of characters by 1 each time AFTER console log
+    charactersString += treeCharacter;
   }
 }
