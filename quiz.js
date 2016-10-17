@@ -1,43 +1,23 @@
-
-// Example
-
-//  *
-// ***
-//*****
-
 // Create object to hold user inputs
 var inputObject = {
   height: "",
   character: ""
 };
 
-// Console logging starting values
-console.log("Starting Height Input:", inputObject.height);
-console.log("Starting Character Input:", inputObject.character);
-
-// Reference to elements on page
-var buttonElement = document.getElementById("button");
-var heightElement = document.getElementById("height");
-var formElement = document.getElementById("form"); //to listen for field inputs
-var characterElement = document.getElementById("character");
-
-console.log("buttonElement:", buttonElement);
-console.log("heightElement:", heightElement);
-console.log("characterElement:", characterElement);
-
 // Reference to Object elements
 var height = inputObject.height;
 var characer = inputObject.character;
 
-console.log("height:", height);
-console.log("characer:", characer);
+// Reference to elements on page
+var formElement = document.getElementById("form"); //to listen for field inputs
+var heightElement = document.getElementById("height");
+var characterElement = document.getElementById("character");
+var buttonElement = document.getElementById("button");
 
-// Error Messages
+// Error Message
 var alertMissingInput = "Sorry, please fill out both fields first.";
-var alertNumber = "Sorry, please provide a number for the height.";
-var alertCharacter = "Sorry, please provide a characer in the characer field.";
 
-// Attached Event Listener to button. If you click it, call PushInputs function
+// Attached event listener to button. If you click it, call PushInputs function
 buttonElement.addEventListener("click", pushInputs);
 
 // Submit form if you press enter while in a field. 
@@ -49,23 +29,18 @@ formElement.addEventListener("keyup", function(event) {
 
 // Function to push user inputs into object
 function pushInputs() {
-
+  // Save new inputs
+  height = heightElement.value;
   character = characterElement.value;
-  height = Number(heightElement.value); //pass height as number
-  console.log("Updated Height Input:", height);
-  console.log("Updated Character Input:", character);
-  
-   // error message if both fields blank
-  if (characterElement.value == "" || heightElement.value == "") {
+  // Error if either of new inputs are nothing
+  if (character == "" || height == "") {
     alert(alertMissingInput);
-  // }
-  // else if (height === NaN) {
-  //   alert(alertNumber);
   } else {
-    makeTree(height, character); // Make the Tree
+    makeTree(height, character);
   }
 }
 
+// Function to draw tree in Console
 function makeTree(treeHeight, treeCharacter) {
   var spacesString = "";
   var charactersString = "";
@@ -80,9 +55,9 @@ function makeTree(treeHeight, treeCharacter) {
   for (var i = 0; i < treeHeight; i++) {    
     // Remove a space each line
     spacesString = spacesString.slice(0, -1);
-    // Increase length of characters by 1 each time.
+    // Increase length of charactersString by 1 each time.
     charactersString += treeCharacter;
-    console.log("line " + (i + 1) + ":" + spacesString + charactersString);
+    console.log(spacesString + charactersString);
     // Increase length of characters by 1 each time AFTER console log
     charactersString += treeCharacter;
   }
