@@ -28,7 +28,7 @@ When your work in complete, push up the branch (`git push origin quiz`) and subm
 
 It is absolutely critical that you read each of these requirements because as a professional you will be expected to completely understand what you are expected to do. If you submit code that does not fulfill the requirements, you will be sent to your room with no dinner.
 
-Create a `tree` function that should build a pine tree out of a character in the Chrome dev tools console. 
+Create a `tree` function that should build a pine tree out of a character in the Chrome dev tools console.
 
 ### It accepts a single object as an argument. The object should have two key/value pairs.
 
