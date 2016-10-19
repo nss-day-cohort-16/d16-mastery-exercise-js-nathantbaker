@@ -1,3 +1,11 @@
+// 1. What happens if you enter more than one character in your character input?
+
+// 2. What happens if you enter a letter in the height field?
+
+// 3. Delete Console.Logs
+
+
+
 // Create object to hold user inputs
 var inputObject = {
   height: "",
@@ -11,7 +19,9 @@ var characterElement = document.getElementById("character");
 var buttonElement = document.getElementById("button");
 
 // Error Message
-var alertMissingInput = "Sorry, please fill out both fields first.";
+var alertMissingInput = "Please fill out both text fields.";
+var alertOneChar = "Please only type 1 character into the character field.";
+var alertNumber = "Please only type a number in the height field.";
 
 // Attached event listener to button. If you click it, call PushInputs function
 buttonElement.addEventListener("click", pushInputs);
@@ -23,7 +33,7 @@ formElement.addEventListener("keyup", function(event) {
     }
 });
 
-// Function to push user inputs into object
+// Function to push user inputs into object and check for errors
 function pushInputs() {
 console.log("pushInputs fuction running");
   // Save new inputs
@@ -32,6 +42,13 @@ console.log("pushInputs fuction running");
   // Error if either of new inputs are nothing
   if (inputObject.character == "" || inputObject.height == "") {
     alert(alertMissingInput);
+  // Error if user types more than 1 character
+  } else if (inputObject.character.length !== 1) {
+    alert(alertOneChar);
+  // Error if height input isn't a number
+  //isNaN() returns true if string doesn't convert to a number
+  } else if (isNaN(inputObject.height)) {
+    alert(alertNumber);
   } else {
     console.log("inputObject:", inputObject);
     makeTree(inputObject);
