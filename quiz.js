@@ -20,7 +20,7 @@ var alertMissingInput = "Sorry, please fill out both fields first.";
 // Attached event listener to button. If you click it, call PushInputs function
 buttonElement.addEventListener("click", pushInputs);
 
-// Submit form if you press enter while in a field. 
+// Submit form if you press enter while in a field.
 formElement.addEventListener("keyup", function(event) {
     if (event.keyCode == 13) { // 13 is key for enter key
         pushInputs();
@@ -52,7 +52,7 @@ function makeTree(treeHeight, treeCharacter) {
   }
 
   // Number of lines we're printing
-  for (var i = 0; i < treeHeight; i++) {    
+  for (var i = 0; i < treeHeight; i++) {
     // Remove a space each line
     spacesString = spacesString.slice(0, -1);
     // Increase length of charactersString by 1 each time.
